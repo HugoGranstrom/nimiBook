@@ -29,6 +29,10 @@
 
 
         
+
+            <script src="https://cdn.jsdelivr.net/gh/pietroppeter/nimib@main/assets/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
         
         <!-- plausible analytics (new in nimibook) -->
         <script defer data-domain="pietroppeter.github.io/nimibook" src="https://plausible.io/js/plausible.js"></script>
@@ -183,7 +187,7 @@
 <p>The Table of Contents (ToC) is defined inside the <code>nbook.nim</code>
 (you can pick another name for the file but in the documentation we will refer to it as <code>nbook.nim</code>).
 As an example here is <code>nbook.nim</code> for this book (nimibook documentation):</p>
-                        <pre><code class="nim hljs"><span class="hljs-keyword">import</span> nimibook
+                        <pre><code class="nohighlight hljs nim"><span class="hljs-keyword">import</span> nimibook
 
 <span class="hljs-keyword">var</span> book = initBookWithToc:
   entry(<span class="hljs-string">&quot;Introduction&quot;</span>, <span class="hljs-string">&quot;index&quot;</span>, numbered = <span class="hljs-literal">false</span>) <span class="hljs-comment"># .nim extension is optional</span>
@@ -206,7 +210,12 @@ nimibookCli(book)
 <li><code>entry</code> accepts two string parameters: chapter title and source path</li>
 <li>source path is relative to book source folder</li>
 <li>source extension defaults to <code>.nim</code>, to use a markdown source you need to explict mark it as <code>.md</code></li>
-<li>chapters that start a section are created with <code>section</code> and start a new block</li>
+<li>chapters that start a section are created with <code>section</code> and start a new block
+<ul>
+<li><strong>note</strong> that the path of section folder is added implicitly to all childrens (entries or sections)
+of a section (e.g. <code>nested.md</code> is inside <code>tocexample</code> folder)</li>
+</ul>
+</li>
 <li>draft chapters (placeholders in the ToC without source) are created with <code>draft</code></li>
 </ul>
 <p>In the future nimibook will support the same <code>SUMMARY.md</code> mechanism as in mdbook.
@@ -247,7 +256,6 @@ Note that currently nimibook does not support part title and separators (availab
 
 
         <script src="./assets/js/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="./assets/js/highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="./assets/js/book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
